@@ -1,0 +1,28 @@
+{
+  "name": "intial package",
+  "version": "1.0.0",
+  "description": "intial package project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "http-server start/Users/Danial/Documents/works/programming/projects/initial\ structure/dist -c-l -o -p 8080"
+  },
+  "author": "Daniellera",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
+    "babel-preset-env": "^1.7.0",
+    "http-server": "^0.11.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.1.1"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "uniqid": "^5.0.3"
+  }
+}
