@@ -1,12 +1,12 @@
 {
   "name": "intial package",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "intial package project",
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "start": "http-server start/Users/Danial/Documents/works/programming/projects/initial\ structure/dist -c-l -o -p 8080"
+    "start": "http-server /dist -c-l -o -p 8080"
   },
   "author": "Daniellera",
   "license": "ISC",
