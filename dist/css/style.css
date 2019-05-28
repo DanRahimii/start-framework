@@ -23,7 +23,36 @@ body {
   p {
     color: blueviolet;
   }
-  .PWA-btn {
+  .main__title, .ios--main__title{
+    height: 52px;
+    background-color: #66A59F;
+    width: auto;
+    text-align: center;
+  }
+  .ios--main__title{
+    height: 70px;
+  }
+  .main__title h2, .ios--main__title h2{
+    color: gold;
+    font-size: 1.3em;
+    padding-top: 0.2em;
+    text-shadow: 0px 0 2px #000000;
+    cursor: default;
+    letter-spacing: -1px;
+  }
+  .ios-pwa-alert img {
+    width: 90%;
+    margin-top: 2em;
+    border: #F08567 groove 3px; 
+  }
+  .ios-pwa-alert {
+    text-align: center;
+    background: wheat;
+    display: none;
+    height: 400px;
+  }
+  .PWA-btn,.ios-pwa-alert button {
+    display: none;
     -moz-box-shadow: 0px 1px 0px 0px #fff6af;
     -webkit-box-shadow: 0px 1px 0px 0px #fff6af;
     box-shadow: 0px 1px 0px 0px #fff6af;
@@ -39,7 +68,6 @@ body {
     -webkit-border-radius: 6px;
     border-radius: 6px;
     border: 1px solid #ffaa22;
-    display: inline-block;
     cursor: pointer;
     color: #2f2c2c;
     font-family: lalezar;
@@ -49,7 +77,12 @@ body {
     text-decoration: none;
     text-shadow: 0px 1px 0px #ffee66;
   }
-  .PWA-btn:hover {
+  .ios-pwa-alert button {
+    display: inline-block;
+    margin: 1.5em;
+    font-size: 1em;
+  }
+  .PWA-btn:hover,.ios-pwa-alert button {
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffab23), color-stop(1, #ffec64));
     background:-moz-linear-gradient(top, #ffab23 5%, #ffec64 100%);
     background:-webkit-linear-gradient(top, #ffab23 5%, #ffec64 100%);
@@ -59,7 +92,8 @@ body {
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64',GradientType=0);
     background-color:#ffab23;
   }
-  .PWA-btn:active {
+  .PWA-btn:active,.ios-pwa-alert button {
     position:relative;
     top:1px;
   }
+  
