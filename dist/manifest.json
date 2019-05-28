@@ -3,12 +3,12 @@
     "short_name": "Danillera app",
     "icons": [
       {
-        "src": "/img/icons/app-icon-512x512.png",
+        "src": "./img/icons/app-icon-512x512.png",
         "type": "image/png",
         "sizes": "512x512"
       }
     ],
-    "start_url": "/index.html",
+    "start_url": "./index.html",
     "scope": ".",
     "display": "standalone",
     "orientation": "portrait-primary",
