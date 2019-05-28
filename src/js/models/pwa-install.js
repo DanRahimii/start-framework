@@ -40,7 +40,8 @@ window.addEventListener('beforeinstallprompt', function(event) {
   })
 
 //detects whether the phone is apple and show the save app message
-if(!!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform) && deferredPrompt){
+if(!!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform) &&
+!window.matchMedia('(display-mode: standalone)').matches){
   elements.iosAlert.style.display = "block";
   elements.mainContent.style.display = "none";
   elements.footer.style.display = "none";
@@ -51,3 +52,7 @@ elements.PWACloseAlertBtn.addEventListener("click",() => {
   elements.footer.style.display = "initial";
   elements.mainContent.style.transition = "1s";
 }) 
+//when application runs
+if (window.matchMedia('(display-mode: standalone)').matches) {  
+  alert("we are on mobile app.");
+}  
