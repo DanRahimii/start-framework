@@ -94,7 +94,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _views_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./views/base */ \"./src/js/views/base.js\");\n/* harmony import */ var _models_pwa_install__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./models/pwa-install */ \"./src/js/models/pwa-install.js\");\n/* harmony import */ var _models_pwa_install__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_models_pwa_install__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\n\n\n\n//# sourceURL=webpack:///./src/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _views_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./views/base */ \"./src/js/views/base.js\");\n/* harmony import */ var _models_pwa_install__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./models/pwa-install */ \"./src/js/models/pwa-install.js\");\n\n\n\n\n\n\n//# sourceURL=webpack:///./src/js/index.js?");
 
 /***/ }),
 
@@ -102,10 +102,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _vie
 /*!**************************************!*\
   !*** ./src/js/models/pwa-install.js ***!
   \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("if (window.matchMedia('(display-mode: standalone)').matches) {\n  \n  var alerted = localStorage.getItem('alerted') || '';\n  if (alerted != 'yes') {\n    alert(\"we are on mobile app.\");\n    localStorage.setItem('alerted','yes');\n  }\n  \n} \n\n\n//# sourceURL=webpack:///./src/js/models/pwa-install.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _views_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/base */ \"./src/js/views/base.js\");\n\nvar deferredPrompt;\n//check if there is no service worker install one\nif ('serviceWorker' in navigator) {\n  navigator.serviceWorker\n    .register('sw.js')\n    .then(function() {\n      console.log('Service worker registered!');\n    });\n}\n// prevent browser from triggering automatic save app and save that event in a var\nwindow.addEventListener('beforeinstallprompt', function(event) {\n  console.log('beforeinstallprompt fired');\n  event.preventDefault();\n  deferredPrompt = event;\n  //it shows our install button for devices except Apple's\n  if (deferredPrompt) {\n    _views_base__WEBPACK_IMPORTED_MODULE_0__[\"elements\"].PWABtn.style.display = \"inline-block\";\n  }\n  return false;\n});\n// triggers the save app banner and console log the result\n  _views_base__WEBPACK_IMPORTED_MODULE_0__[\"elements\"].PWABtn.addEventListener(\"click\",() => {\n    if (deferredPrompt) {\n        \n        deferredPrompt.prompt();\n    \n        deferredPrompt.userChoice.then(function(choiceResult) {\n          console.log(choiceResult.outcome);\n    \n          if (choiceResult.outcome === 'dismissed') {\n            console.log('User cancelled installation');\n          } else {\n            console.log('User added to home screen');\n          }\n        });\n    \n        deferredPrompt = null;\n    }\n  })\n\n//detects whether the phone is apple and show the save app message\nif(!!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform) &&\n!window.matchMedia('(display-mode: standalone)').matches){\n  _views_base__WEBPACK_IMPORTED_MODULE_0__[\"elements\"].iosAlert.style.display = \"block\";\n  _views_base__WEBPACK_IMPORTED_MODULE_0__[\"elements\"].mainContent.style.display = \"none\";\n  _views_base__WEBPACK_IMPORTED_MODULE_0__[\"elements\"].footer.style.display = \"none\";\n};\n_views_base__WEBPACK_IMPORTED_MODULE_0__[\"elements\"].PWACloseAlertBtn.addEventListener(\"click\",() => {\n  _views_base__WEBPACK_IMPORTED_MODULE_0__[\"elements\"].iosAlert.style.display = \"none\";\n  _views_base__WEBPACK_IMPORTED_MODULE_0__[\"elements\"].mainContent.style.display = \"initial\";\n  _views_base__WEBPACK_IMPORTED_MODULE_0__[\"elements\"].footer.style.display = \"initial\";\n  _views_base__WEBPACK_IMPORTED_MODULE_0__[\"elements\"].mainContent.style.transition = \"1s\";\n}) \n\n//when application runs (not app on browser)\nif (window.matchMedia('(display-mode: standalone)').matches) {\n  \n  //by using this localstorage method we execute code once \n  var alerted = localStorage.getItem('alerted') || '';\n  if (alerted != 'yes') {\n   alert(\" we are on mobile app\");\n   localStorage.setItem('alerted','yes');\n  }\n  \n}  \n\n//# sourceURL=webpack:///./src/js/models/pwa-install.js?");
 
 /***/ }),
 

@@ -1,18 +1,24 @@
-const appShell,dynamic;
-appShell = "appShell-v" + "1";
-dynamic = "dynamic-v" + "1"
+let appShell,dynamic;
+appShell = "appShell-v" + "1.3";
+dynamic = "dynamic-v" + "1.3"
+
+
+
 self.addEventListener('install', function(event) {
   console.log('[Service Worker] Installing Service Worker ...', event);
   event.waitUntil(caches.open(appShell)
   .then( e => {
     e.addAll([
       "/",
-      "index.html",
+      "/index.html",
+      "/offline.html",
       "./js/bundle.js",
       "./css/style.css"
     ])
   }))
 });
+
+
 
 self.addEventListener('activate', function(event) {
   console.log('[Service Worker] Activating Service Worker ....', event);
@@ -32,6 +38,8 @@ self.addEventListener('activate', function(event) {
   return self.clients.claim();
 });
 
+
+
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request).then( e => {
@@ -48,6 +56,10 @@ self.addEventListener('fetch', function(event) {
             });
           })
           .catch(err => {
+            return caches.open(appShell)
+            .then(e => {
+              return e.match("/offline.html")
+            })
           })
       }
     })
